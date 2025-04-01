@@ -1412,7 +1412,7 @@ async def plan(client, message):
 	
         InlineKeyboardButton("💸 𝗖𝗹𝗶𝗰𝗸 𝗔𝗹𝗹 𝗣𝗹𝗮𝗻𝘀 & 𝗣𝗿𝗶𝗰𝗲𝘀 💸", callback_data='free')],[InlineKeyboardButton("❌ ᴄʟᴏꜱᴇ ❌", callback_data="close_data")
     ]]
-    await message.reply_photo(photo="https://envs.sh/zkr.jpg", caption=script.PREPLANS_TXT.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(btn))
+    await message.reply_photo(photo="https://graph.org/file/976da58cadd02ea0b25e3-c0ba67941076367ef4.png", caption=script.PREPLANS_TXT.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(btn))
         
 @Client.on_message(filters.command("myplan"))
 async def check_plans_cmd(client, message):
