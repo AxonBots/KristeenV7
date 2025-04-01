@@ -12,9 +12,9 @@ BOT_TOKEN = environ.get('BOT_TOKEN', "6572948658:AAG0z6ymFzFrLUdwSjsa7VPysjJ05I4
 
 
 # This Pictures Is For Start Message Picture, You Can Add Multiple By Giving One Space Between Each.
-PICS = (environ.get('PICS', 'https://envs.sh/fDq.jpg')).split()
-SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://envs.sh/fDq.jpg'))
-PAYPICS = (environ.get('PAYPICS', 'https://envs.sh/fDq.jpg')).split()
+PICS = (environ.get('PICS', 'https://graph.org/file/976da58cadd02ea0b25e3-c0ba67941076367ef4.png')).split()
+SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://graph.org/file/976da58cadd02ea0b25e3-c0ba67941076367ef4.png'))
+PAYPICS = (environ.get('PAYPICS', 'https://graph.org/file/976da58cadd02ea0b25e3-c0ba67941076367ef4.png')).split()
 
 # Admins & Users
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '7798091025').split()] # For Multiple Id Use One Space Between Each.
@@ -164,7 +164,7 @@ if 'DYNO' in environ:
     ON_HEROKU = True
 else:
     ON_HEROKU = False
-URL = environ.get("URL", "https://tory-benita-mafia-e3faa15d.koyeb.app/")
+URL = environ.get("URL", " ")
 
 
 # Rename Info : If True Then Bot Rename File Else Not
