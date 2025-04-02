@@ -27,7 +27,7 @@ umongo==3.0.1
 PyLeaves==1.0.2
 youtube-search-python==1.4.6
 opencv-python-headless==4.7.0.68
-googletrans==4.0.0-rc1
+googletrans==3.1.0a0  # Downgraded to avoid httpx==0.13.3 pin
 python-dotenv==0.21.1
 gTTS==2.3.1
 speedtest==0.0.1
@@ -38,3 +38,4 @@ dnspython==2.3.0
 ffmpeg-python==0.2.0
 openai>=1.0.0
 git+https://github.com/Joelkb/cinemagoer
+httpx>=0.23.0,<1  # Added explicitly to satisfy openai
