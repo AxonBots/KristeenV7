@@ -573,7 +573,7 @@ Example:- /set_caption 📕 File Name: {filename}
 
 <b><blockquote>🎖️ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʀᴇᴍɪᴜᴍ ᴘʟᴀɴꜱ :</blockquote>
 
- ❏ 𝟶1𝟶₹    ➠    𝟶𝟷 ᴡᴇᴇᴋꜱ
+ ❏ 𝟶15₹    ➠    𝟶𝟷 ᴡᴇᴇᴋꜱ
  ❏ 𝟶35₹    ➠    𝟶𝟷 ᴍᴏɴᴛʜ
  ❏ 𝟶𝟼5₹    ➠    𝟶𝟸 ᴍᴏɴᴛʜ
  ❏ 𝟷𝟶𝟶₹    ➠    𝟶𝟹 ᴍᴏɴᴛʜ
@@ -603,7 +603,7 @@ Example:- /set_caption 📕 File Name: {filename}
 
 <b><blockquote>🎖️ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʀᴇᴍɪᴜᴍ ᴘʟᴀɴꜱ :</blockquote>
 
- ❏ 𝟶1𝟶₹    ➠    𝟶𝟷 ᴡᴇᴇᴋꜱ
+ ❏ 𝟶15₹    ➠    𝟶𝟷 ᴡᴇᴇᴋꜱ
  ❏ 𝟶35₹    ➠    𝟶𝟷 ᴍᴏɴᴛʜ
  ❏ 𝟶𝟼5₹    ➠    𝟶𝟸 ᴍᴏɴᴛʜ
  ❏ 𝟷𝟶𝟶₹    ➠    𝟶𝟹 ᴍᴏɴᴛʜ
