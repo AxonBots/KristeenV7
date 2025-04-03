@@ -6,7 +6,7 @@ from pyrogram.types import *
 from database.ia_filterdb import col, sec_col, get_file_details, unpack_new_file_id, get_bad_files
 from database.users_chats_db import db, delete_all_referal_users, get_referal_users_count, get_referal_all_users, referal_add_user
 from database.join_reqs import JoinReqs
-from info import CLONE_MODE, OWNER_LNK, REACTIONS, CHANNELS, REQUEST_TO_JOIN_MODE, TRY_AGAIN_BTN, ADMINS, SHORTLINK_MODE, PREMIUM_AND_REFERAL_MODE, STREAM_MODE, AUTH_CHANNEL, REFERAL_PREMEIUM_TIME, REFERAL_COUNT, PAYMENT_TEXT, PAYMENT_QR, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT, CHNL_LNK, GRP_LNK, REQST_CHANNEL, SUPPORT_CHAT_ID, SUPPORT_CHAT, MAX_B_TN, VERIFY, SHORTLINK_API, SHORTLINK_URL, TUTORIAL, VERIFY_TUTORIAL, IS_TUTORIAL, URL
+from info import CLONE_MODE, OWNER_LNK, REACTIONS, CHANNELS, REQUEST_TO_JOIN_MODE, TRY_AGAIN_BTN, ADMINS, SHORTLINK_MODE, PREMIUM_AND_REFERAL_MODE, STREAM_MODE, AUTH_CHANNEL, REFERAL_PREMEIUM_TIME, REFERAL_COUNT, PAYMENT_TEXT, PAYMENT_QR, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT, CHNL_LNK, GRP_LNK, REQST_CHANNEL, SUPPORT_CHAT_ID, SUPPORT_CHAT, MAX_B_TN, VERIFY, SHORTLINK_API, SHORTLINK_URL, TUTORIAL, VERIFY_TUTORIAL, IS_TUTORIAL, URL, PREMIUM_GROUPS
 from utils import get_settings, pub_is_subscribed, get_size, is_subscribed, save_group_settings, temp, verify_user, check_token, check_verification, get_token, get_shortlink, get_tutorial, get_seconds
 from database.connections_mdb import active_connection
 from urllib.parse import quote_plus
@@ -917,7 +917,17 @@ async def settings(client, message):
                     callback_data=f'setgs#is_shortlink#{settings["is_shortlink"]}#{grp_id}',
                 ),
             ],
-        ]
+            [
+                InlineKeyboardButton(
+                    'Premium Group',
+                    callback_data=f'setgs#is_premium_group#{settings["is_premium_group"]}#{grp_id}',
+                ),
+                InlineKeyboardButton(
+                    '✅ Oɴ' if settings["is_premium_group"] else '❌ Oғғ',
+                    callback_data=f'setgs#is_premium_group#{settings["is_premium_group"]}#{grp_id}',
+                ),
+            ],
+            ]
         btn = [[
             InlineKeyboardButton("Oᴘᴇɴ Hᴇʀᴇ ↓", callback_data=f"opnsetgrp#{grp_id}"),
             InlineKeyboardButton("Oᴘᴇɴ Iɴ PM ⇲", callback_data=f"opnsetpm#{grp_id}")
@@ -1412,7 +1422,7 @@ async def plan(client, message):
 	
         InlineKeyboardButton("💸 𝗖𝗹𝗶𝗰𝗸 𝗔𝗹𝗹 𝗣𝗹𝗮𝗻𝘀 & 𝗣𝗿𝗶𝗰𝗲𝘀 💸", callback_data='free')],[InlineKeyboardButton("❌ ᴄʟᴏꜱᴇ ❌", callback_data="close_data")
     ]]
-    await message.reply_photo(photo="https://graph.org/file/976da58cadd02ea0b25e3-c0ba67941076367ef4.png", caption=script.PREPLANS_TXT.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(btn))
+    await message.reply_photo(photo="https://envs.sh/zkr.jpg", caption=script.PREPLANS_TXT.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(btn))
         
 @Client.on_message(filters.command("myplan"))
 async def check_plans_cmd(client, message):
@@ -1454,3 +1464,33 @@ async def purge_requests(client, message):
             parse_mode=enums.ParseMode.MARKDOWN,
             disable_web_page_preview=True
         )
+	    
+
+@Client.on_message(filters.command("addpremiumgroup") & filters.user(ADMINS))
+async def add_premium_group(bot, message):
+    if len(message.command) < 2:
+        await message.reply("Usage: /addpremiumgroup <group_id>")
+        return
+    try:
+        group_id = int(message.command[1])
+    except ValueError:
+        await message.reply("Please provide a valid group ID (numeric).")
+        return
+    await db.add_premium_group(group_id)
+    PREMIUM_GROUPS.add(group_id)
+    await message.reply(f"**ɢʀᴏᴜᴘ {group_id} ᴀᴅᴅᴇᴅ ᴛᴏ ᴘʀᴇᴍɪᴜᴍ ʟɪꜱᴛ. ᴛᴏᴋᴇɴ ꜱʏꜱᴛᴇᴍ ᴅɪꜱᴀʙʟᴇᴅ ꜰᴏʀ ᴛʜɪꜱ ɢʀᴏᴜᴘ.**")
+
+
+@Client.on_message(filters.command("removepremiumgroup") & filters.user(ADMINS))
+async def remove_premium_group(bot, message):
+    if len(message.command) < 2:
+        await message.reply("Usage: /removepremiumgroup <group_id>")
+        return
+    try:
+        group_id = int(message.command[1])
+    except ValueError:
+        await message.reply("Please provide a valid group ID (numeric).")
+        return
+    await db.remove_premium_group(group_id)
+    PREMIUM_GROUPS.discard(group_id)
+    await message.reply(f"**ɢʀᴏᴜᴘ {group_id} ʀᴇᴍᴏᴠᴇᴅ ꜰʀᴏᴍ ᴘʀᴇᴍɪᴜᴍ ʟɪꜱᴛ. ᴛᴏᴋᴇɴ ꜱʏꜱᴛᴇᴍ ᴇɴᴀʙʟᴇᴅ ꜰᴏʀ ᴛʜɪꜱ ɢʀᴏᴜᴘ.**")
