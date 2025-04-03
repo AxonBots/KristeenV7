@@ -10,7 +10,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
-from utils import get_size, is_subscribed, pub_is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings, get_shortlink, get_tutorial, send_all, get_cap
+from utils import get_size, is_subscribed, pub_is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings, get_shortlink, get_tutorial, send_all, get_cap, is_check_admin
 from database.users_chats_db import db
 from database.ia_filterdb import col, sec_col, db as vjdb, sec_db, get_file_details, get_search_results, get_bad_files
 from database.filters_mdb import del_all, find_filter, get_filters
@@ -43,11 +43,24 @@ async def give_filter(client, message):
                 if btn:
                     btn.append([InlineKeyboardButton("ᴜɴᴍᴜᴛᴇ ᴍᴇ 🔕", callback_data=f"unmuteme#{int(user_id)}")])
                     await client.restrict_chat_member(chatid, message.from_user.id, ChatPermissions(can_send_messages=False))
-                    await message.reply_photo(photo=random.choice(PICS), caption=f"<b>👋 ʜᴇʟʟᴏ {message.from_user.mention},\n\nᴘʟᴇᴀꜱᴇ ᴊᴏɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴛʜᴇɴ ᴄʟɪᴄᴋ ᴏɴ ᴜɴᴍᴜᴛᴇ ᴍᴇ ʙᴜᴛᴛᴏɴ. </b>😇", reply_markup=InlineKeyboardMarkup(btn), parse_mode=enums.ParseMode.HTML)
+                    await message.reply_photo(
+                        photo=random.choice(PICS), 
+                        caption=f"<b>👋 ʜᴇʟʟᴏ {message.from_user.mention},\n\nᴘʟᴇᴀꜱᴇ ᴊᴏɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴛʜᴇɴ ᴄʟɪᴄᴋ ᴏɴ ᴜɴᴍᴜᴛᴇ ᴍᴇ ʙᴜᴛᴛᴏɴ. </b>😇", 
+                        reply_markup=InlineKeyboardMarkup(btn), 
+                        parse_mode=enums.ParseMode.HTML
+                    )
                     return
             except Exception as e:
                 print(e)
             
+        # Link filter feature added here
+        if re.findall(r'https?://\S+|www\.\S+|t\.me/\S+', message.text):  # Check for any URL or Telegram link
+            if await is_check_admin(client, message.chat.id, message.from_user.id):  # Admins can send links
+                return
+            await message.delete()  # Delete the message with link
+            await message.reply("<b>sᴇɴᴅɪɴɢ ʟɪɴᴋ ɪsɴ'ᴛ ᴀʟʟᴏᴡᴇᴅ ʜᴇʀᴇ ❌🤞🏻</b>")  # Send warning
+            return
+
         manual = await manual_filters(client, message)
         if manual == False:
             settings = await get_settings(message.chat.id)
@@ -64,15 +77,13 @@ async def give_filter(client, message):
                     ai_search = True
                     reply_msg = await message.reply_text(f"<b><i>Searching For {message.text} 🔍</i></b>")
                     await auto_filter(client, message.text, message, reply_msg, ai_search)
-    else: #a better logic to avoid repeated lines of code in auto_filter function
+    else:  # a better logic to avoid repeated lines of code in auto_filter function
         search = message.text
         temp_files, temp_offset, total_results = await get_search_results(chat_id=message.chat.id, query=search.lower(), offset=0, filter=True)
         if total_results == 0:
             return
         else:
-            return await message.reply_text(f"<b>Hᴇʏ {message.from_user.mention}, {str(total_results)} ʀᴇsᴜʟᴛs ᴀʀᴇ ғᴏᴜɴᴅ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {search}. \n\nTʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ...\n\nJᴏɪɴ ᴀɴᴅ Sᴇᴀʀᴄʜ Hᴇʀᴇ - {GRP_LNK}</b>")
-
-@Client.on_message(filters.private & filters.text & filters.incoming)
+            return await message.reply_text(f"<b>Hᴇʏ {message.from_user.mention}, {str(total_results)} ʀᴇsᴜʟᴛs ᴀʀᴇ ғᴏᴜɴᴅ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {search}. \n\nTʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ...\n\nJᴏɪɴ ᴀɴᴅ Sᴇᴀʀᴄʜ Hᴇʀᴇ - {GRP_LNK}</b>")@Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
     content = message.text
     user = message.from_user.first_name
@@ -1925,7 +1936,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
     elif query.data == "free":
         buttons = [[
-            InlineKeyboardButton('📲 ꜱᴇɴᴅ ᴘᴀʏᴍᴇɴᴛ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ ʜᴇʀᴇ', url='https://telegram.me/')
+            InlineKeyboardButton('📲 ꜱᴇɴᴅ ᴘᴀʏᴍᴇɴᴛ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ ʜᴇʀᴇ', url='https://telegram.me/MAHI_KX')
         ],[
 	        InlineKeyboardButton('👀 ᴡᴀᴛᴄʜ ᴛᴜᴛᴏʀɪᴀʟ ʜᴇʀᴇ 👀', url='https://t.me/HowToVerify_xD/20')
 	    ],[
@@ -1966,7 +1977,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
     elif query.data == "other":
         buttons = [[
-            InlineKeyboardButton('☎️ ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ', url='https://telegram.me/')
+            InlineKeyboardButton('☎️ ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ', url='https://telegram.me/MAHI_KX')
         ],[
             InlineKeyboardButton('⇋ ʙᴀᴄᴋ ⇋', callback_data='free')
         ]]
@@ -2021,7 +2032,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "sccode":
         buttons = [[
-            InlineKeyboardButton('💸 ɢᴇᴛ ꜰʀᴏᴍ ʜᴇʀᴇ ✅', url='https://telegram.me/')
+            InlineKeyboardButton('💸 ɢᴇᴛ ꜰʀᴏᴍ ʜᴇʀᴇ ✅', url='https://telegram.me/MAHI_KX')
         ],[
             InlineKeyboardButton('⇋ ʙᴀᴄᴋ ⇋', callback_data='start')
         ]]
@@ -2296,7 +2307,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "tele":
         btn = [[
-            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/"),
+            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/MAHI_KX"),
             InlineKeyboardButton("⇋ ʙᴀᴄᴋ ⇋", callback_data="help")
         ]]
         await client.edit_message_media(
@@ -2337,7 +2348,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "share":
         btn = [[
-            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/"),
+            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/MAHI_KX"),
             InlineKeyboardButton("⇋ ʙᴀᴄᴋ ⇋", callback_data="help")
         ]]
         await client.edit_message_media(
@@ -2353,7 +2364,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "song":
         btn = [[
-            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/"),
+            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/MAHI_KX"),
             InlineKeyboardButton("⇋ ʙᴀᴄᴋ ⇋", callback_data="help")
         ]]
         await client.edit_message_media(
@@ -2394,7 +2405,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "sticker":
         btn = [[
-            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/"),
+            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/MAHI_KX"),
             InlineKeyboardButton("⇋ ʙᴀᴄᴋ ⇋", callback_data="help")
         ]]
         await client.edit_message_media(
@@ -2410,7 +2421,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "english_info":
         btn = [[
-            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/"),
+            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/MAHI_KX"),
             InlineKeyboardButton("⇋ ʙᴀᴄᴋ ⇋", callback_data="start")
         ]]
         await client.edit_message_media(
@@ -2427,7 +2438,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "dsclr":
         btn = [[
-            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/"),
+            InlineKeyboardButton("📞 ᴄᴏɴᴛᴀᴄᴛ 🐍", url="telegram.me/MAHI_KX"),
             InlineKeyboardButton("⇋ ʙᴀᴄᴋ ⇋", callback_data="start")
         ]]
         await client.edit_message_media(
