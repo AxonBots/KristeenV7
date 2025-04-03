@@ -559,6 +559,17 @@ async def check_verification(bot, userid):
     if not await db.is_user_exist(user.id):
         await db.add_user(user.id, user.first_name)
         await bot.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(user.id, user.mention))
+    
+    # Check if the chat is a premium group
+    chat_id = None
+    if temp.SHORT.get(userid):  # If user came from a group via shortlink
+        chat_id = temp.SHORT.get(userid)
+    elif temp.GETALL.get(userid):  # If user came from a group via all files
+        chat_id = list(temp.GETALL.keys())[0] if temp.GETALL else None
+    
+    if chat_id and await db.is_premium_group(chat_id):
+        return True  # Skip token system for premium groups
+    
     tz = pytz.timezone('Asia/Kolkata')
     today = date.today()
     if user.id in VERIFIED.keys():
@@ -682,6 +693,12 @@ async def get_cap(settings, remaining_seconds, files, query, total_results, sear
             cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file['file_id']}'>[{get_size(file['file_size'])}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file['file_name'].split()))}\n\n</a></b>"
     return cap
 
+async def is_check_admin(bot, chat_id, user_id):
+    try:
+        member = await bot.get_chat_member(chat_id, user_id)
+        return member.status in [enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.OWNER]
+    except:
+        return False
 
 async def get_seconds(time_string):
     def extract_value_and_unit(ts):
