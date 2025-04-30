@@ -550,8 +550,8 @@ Example:- /set_caption 📕 File Name: {filename}
  ❏ 𝟷80₹    ➠    𝟶𝟼 ᴍᴏɴᴛʜ
  ❏ 𝟹0𝟶₹    ➠    𝟷𝟸 ᴍᴏɴᴛʜ
 
-💵 ᴜᴘɪ ɪᴅ ➩ @MAHI_KX
-📸 ǫʀ ᴄᴏᴅᴇ ➩ @MAHI_KX
+💵 ᴜᴘɪ ɪᴅ ➩ @mihir_kx
+📸 ǫʀ ᴄᴏᴅᴇ ➩ @mihir_kx
  
 ⚜️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ: /myplan
 
@@ -580,8 +580,8 @@ Example:- /set_caption 📕 File Name: {filename}
  ❏ 𝟷80₹    ➠    𝟶𝟼 ᴍᴏɴᴛʜ
  ❏ 𝟹0𝟶₹    ➠    𝟷𝟸 ᴍᴏɴᴛʜ
 
-💵 ᴜᴘɪ ɪᴅ ➩ @MAHI_KX
-📸 ǫʀ ᴄᴏᴅᴇ ➩ @MAHI_KX
+💵 ᴜᴘɪ ɪᴅ ➩ @mihir_kx
+📸 ǫʀ ᴄᴏᴅᴇ ➩ @mihir_kx
  
 ⚜️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ: /myplan
 
@@ -610,8 +610,8 @@ Example:- /set_caption 📕 File Name: {filename}
  ❏ 𝟷80₹    ➠    𝟶𝟼 ᴍᴏɴᴛʜ
  ❏ 𝟹0𝟶₹    ➠    𝟷𝟸 ᴍᴏɴᴛʜ
 
-💵 ᴜᴘɪ ɪᴅ ➩ @MAHI_KX
-📸 ǫʀ ᴄᴏᴅᴇ ➩ @MAHI_KX
+💵 ᴜᴘɪ ɪᴅ ➩ @mihir_kx
+📸 ǫʀ ᴄᴏᴅᴇ ➩ @mihir_kx
  
 ⚜️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ: /myplan
 
@@ -626,7 +626,7 @@ Example:- /set_caption 📕 File Name: {filename}
 
 🏆 ɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴀ ɴᴇᴡ ᴘʟᴀɴ ᴀᴘᴀʀᴛ ꜰʀᴏᴍ ᴛʜᴇ ɢɪᴠᴇɴ ᴘʟᴀɴ, ᴛʜᴇɴ ʏᴏᴜ ᴄᴀɴ ᴛᴀʟᴋ ᴛᴏ ᴏᴜʀ <a href='https://telegram.me/'>ᴏᴡɴᴇʀ</a> ᴅɪʀᴇᴄᴛʟʏ ʙʏ ᴄʟɪᴄᴋɪɴɢ ᴏɴ ᴛʜᴇ ᴄᴏɴᴛᴀᴄᴛ ʙᴜᴛᴛᴏɴ ɢɪᴠᴇɴ ʙᴇʟᴏᴡ.
     
-👨‍💻 ᴄᴏɴᴛᴀᴄᴛ ᴛʜᴇ <a href='https://telegram.me/MAHI_KX'>ᴏᴡɴᴇʀ</a> ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ᴏᴛʜᴇʀ ᴘʟᴀɴ.
+👨‍💻 ᴄᴏɴᴛᴀᴄᴛ ᴛʜᴇ <a href='https://telegram.me/mihir_kx'>ᴏᴡɴᴇʀ</a> ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ᴏᴛʜᴇʀ ᴘʟᴀɴ.
 
 ➛ ᴜꜱᴇ /plan ᴛᴏ ꜱᴇᴇ ᴀʟʟ ᴏᴜʀ ᴘʟᴀɴꜱ ᴀᴛ ᴏɴᴄᴇ.
 ➛ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ ʙʏ ᴜꜱɪɴɢ : /myplan</b>"""
@@ -642,8 +642,8 @@ Example:- /set_caption 📕 File Name: {filename}
  ❏ 𝟷80₹    ➠    𝟶𝟼 ᴍᴏɴᴛʜ
  ❏ 𝟹0𝟶₹    ➠    𝟷𝟸 ᴍᴏɴᴛʜ
 
-💵 ᴜᴘɪ ɪᴅ ➩ @MAHI_KX
-📸 ǫʀ ᴄᴏᴅᴇ ➩ @MAHI_KX
+💵 ᴜᴘɪ ɪᴅ ➩ @mihir_kx
+📸 ǫʀ ᴄᴏᴅᴇ ➩ @mihir_kx
  
 ⚜️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ: /myplan
 
