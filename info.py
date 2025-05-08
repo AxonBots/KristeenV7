@@ -110,12 +110,12 @@ USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 # Token Verification Info :
 VERIFY = bool(environ.get('VERIFY', False))
 
-VERIFY_SHORTLINK_URL = environ.get('VERIFY_SHORTLINK_URL', 'shortxlinks.com')
-VERIFY_SHORTLINK_API = environ.get('VERIFY_SHORTLINK_API', '37191a6d435c63b283f8aa3e53cdbaedf62c0a1d')
+VERIFY_SHORTLINK_URL = environ.get('VERIFY_SHORTLINK_URL', 'mslinks.in')
+VERIFY_SHORTLINK_API = environ.get('VERIFY_SHORTLINK_API', '972a69ebbb22e1b14e3f20a065de1aaef68c7c79')
 #---@mihir_ax-------
 MULTIPLE_SHORTNER = False
-VERIFY_SHORTLINK_URL_2 = "vipcpm.in"
-VERIFY_SHORTLINK_API_2 = "9c12045dc1cad72346928e2de68ae5638acb25d2"
+VERIFY_SHORTLINK_URL_2 = "mslinks.in"
+VERIFY_SHORTLINK_API_2 = "972a69ebbb22e1b14e3f20a065de1aaef68c7c79"
 
 VERIFY_TUTORIAL = environ.get('VERIFY_TUTORIAL', 'https://t.me/HowToVerify_xD/27')
 
