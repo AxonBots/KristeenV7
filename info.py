@@ -108,7 +108,7 @@ USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 
 
 # Token Verification Info :
-VERIFY = bool(environ.get('VERIFY', True))
+VERIFY = bool(environ.get('VERIFY', False))
 
 VERIFY_SHORTLINK_URL = environ.get('VERIFY_SHORTLINK_URL', 'mslinks.in')
 VERIFY_SHORTLINK_API = environ.get('VERIFY_SHORTLINK_API', '972a69ebbb22e1b14e3f20a065de1aaef68c7c79')
