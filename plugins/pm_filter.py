@@ -71,7 +71,7 @@ async def give_filter(client, message):
             try:
                 if settings['auto_ffilter']:
                     ai_search = True
-                    reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                    reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                     await auto_filter(client, message.text, message, reply_msg, ai_search)
             except KeyError:
                 grpid = await active_connection(str(message.from_user.id))
@@ -79,7 +79,7 @@ async def give_filter(client, message):
                 settings = await get_settings(message.chat.id)
                 if settings['auto_ffilter']:
                     ai_search = True
-                    reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                    reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                     await auto_filter(client, message.text, message, reply_msg, ai_search)
     else:
         search = message.text
@@ -108,7 +108,7 @@ async def pm_text(bot, message):
         ai_search = True
         reply_msg = await bot.send_message(
             message.from_user.id, 
-            f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>", 
+            f"<b><i>Searching For You 🔍</i></b>", 
             reply_to_message_id=message.id
         )
         await auto_filter(bot, content, message, reply_msg, ai_search)
@@ -286,7 +286,7 @@ async def advantage_spoll_choker(bot, query):
             if files:
                 k = (movie, files, offset, total_results)
                 ai_search = True
-                reply_msg = await query.message.edit_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                reply_msg = await query.message.edit_text(f"<b><i>Searching For You 🔍</i></b>")
                 await auto_filter(bot, movie, query, reply_msg, ai_search, k)
             else:
                 reqstr1 = query.from_user.id if query.from_user else 0
@@ -2870,7 +2870,7 @@ async def manual_filters(client, message, text=False):
                             try:
                                 if settings['auto_ffilter']:
                                     ai_search = True
-                                    reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                    reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                     await auto_filter(client, message.text, message, reply_msg, ai_search)
                                     try:
                                         if settings['auto_delete']:
@@ -2899,7 +2899,7 @@ async def manual_filters(client, message, text=False):
                                 settings = await get_settings(message.chat.id)
                                 if settings['auto_ffilter']:
                                     ai_search = True
-                                    reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                    reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                     await auto_filter(client, message.text, message, reply_msg, ai_search)
 
                         else:
@@ -2915,7 +2915,7 @@ async def manual_filters(client, message, text=False):
                             try:
                                 if settings['auto_ffilter']:
                                     ai_search = True
-                                    reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                    reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                     await auto_filter(client, message.text, message, reply_msg, ai_search)
                                     try:
                                         if settings['auto_delete']:
@@ -2944,7 +2944,7 @@ async def manual_filters(client, message, text=False):
                                 settings = await get_settings(message.chat.id)
                                 if settings['auto_ffilter']:
                                     ai_search = True
-                                    reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                    reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                     await auto_filter(client, message.text, message, reply_msg, ai_search)
                     elif btn == "[]":
                         joelkb = await client.send_cached_media(
@@ -2957,7 +2957,7 @@ async def manual_filters(client, message, text=False):
                         try:
                             if settings['auto_ffilter']:
                                 ai_search = True
-                                reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                 await auto_filter(client, message.text, message, reply_msg, ai_search)
                                 try:
                                     if settings['auto_delete']:
@@ -2986,7 +2986,7 @@ async def manual_filters(client, message, text=False):
                             settings = await get_settings(message.chat.id)
                             if settings['auto_ffilter']:
                                 ai_search = True
-                                reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                 await auto_filter(client, message.text, message, reply_msg, ai_search)
                     else:
                         button = eval(btn)
@@ -2999,7 +2999,7 @@ async def manual_filters(client, message, text=False):
                         try:
                             if settings['auto_ffilter']:
                                 ai_search = True
-                                reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                 await auto_filter(client, message.text, message, reply_msg, ai_search)
                                 try:
                                     if settings['auto_delete']:
@@ -3028,7 +3028,7 @@ async def manual_filters(client, message, text=False):
                             settings = await get_settings(message.chat.id)
                             if settings['auto_ffilter']:
                                 ai_search = True
-                                reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                 await auto_filter(client, message.text, message, reply_msg, ai_search)
 
                 except Exception as e:
@@ -3067,7 +3067,7 @@ async def global_filters(client, message, text=False):
                                 try:
                                     if settings['auto_ffilter']:
                                         ai_search = True
-                                        reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                        reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                         await auto_filter(client, message.text, message, reply_msg, ai_search)
                                         try:
                                             if settings['auto_delete']:
@@ -3096,7 +3096,7 @@ async def global_filters(client, message, text=False):
                                     settings = await get_settings(message.chat.id)
                                     if settings['auto_ffilter']:
                                         ai_search = True
-                                        reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                        reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                         await auto_filter(client, message.text, message, reply_msg, ai_search) 
                             else:
                                 try:
@@ -3124,7 +3124,7 @@ async def global_filters(client, message, text=False):
                                 try:
                                     if settings['auto_ffilter']:
                                         ai_search = True
-                                        reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                        reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                         await auto_filter(client, message.text, message, reply_msg, ai_search)
                                         try:
                                             if settings['auto_delete']:
@@ -3153,7 +3153,7 @@ async def global_filters(client, message, text=False):
                                     settings = await get_settings(message.chat.id)
                                     if settings['auto_ffilter']:
                                         ai_search = True
-                                        reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                        reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                         await auto_filter(client, message.text, message, reply_msg, ai_search)
                             else:
                                 try:
@@ -3179,7 +3179,7 @@ async def global_filters(client, message, text=False):
                             try:
                                 if settings['auto_ffilter']:
                                     ai_search = True
-                                    reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                    reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                     await auto_filter(client, message.text, message, reply_msg, ai_search)
                                     try:
                                         if settings['auto_delete']:
@@ -3208,7 +3208,7 @@ async def global_filters(client, message, text=False):
                                 settings = await get_settings(message.chat.id)
                                 if settings['auto_ffilter']:
                                     ai_search = True
-                                    reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                    reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                     await auto_filter(client, message.text, message, reply_msg, ai_search) 
                         else:
                             try:
@@ -3235,7 +3235,7 @@ async def global_filters(client, message, text=False):
                             try:
                                 if settings['auto_ffilter']:
                                     ai_search = True
-                                    reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                    reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                     await auto_filter(client, message.text, message, reply_msg, ai_search)
                                     try:
                                         if settings['auto_delete']:
@@ -3264,7 +3264,7 @@ async def global_filters(client, message, text=False):
                                 settings = await get_settings(message.chat.id)
                                 if settings['auto_ffilter']:
                                     ai_search = True
-                                    reply_msg = await message.reply_text(f"<b><i>Searching For {query.from_user.mention} 🔍</i></b>")
+                                    reply_msg = await message.reply_text(f"<b><i>Searching For You 🔍</i></b>")
                                     await auto_filter(client, message.text, message, reply_msg, ai_search)
                         else:
                             try:
